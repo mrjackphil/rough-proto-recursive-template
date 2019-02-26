@@ -1,7 +1,7 @@
 <template>
 	<draggable class="drag-area" :list="childrens" :options="{group:{name: 'blocks'}}">
 		<div class="compo" v-for="el in childrens" :key="el.name + String(Math.random())">
-			<component v-bind:is="el.name" :color="el.color" v-slot:default>
+			<component v-bind:is="el.name" v-bind="el.options" v-slot:default>
 			</component>
 			<recursive-draggable :childrens="el.childrens" />
 		</div>

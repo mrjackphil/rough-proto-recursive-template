@@ -8,7 +8,7 @@
         @start="drag=true"
         @end="drag=false"
       >
-        <component :color="el.color" v-bind:is="el.name" v-for="el in array" :key="el.name + el.color"></component>
+        <component v-bind="el.options" v-bind:is="el.name" v-for="el in array" :key="el.name + el.options.color"></component>
       </draggable>
     </div>
     <div class="template">
@@ -36,13 +36,13 @@ import RecursiveDraggable from '@/components/RecursiveDraggable.vue';
 })
 export default class App extends Vue {
   array = [
-	{ name: 'Block', color: 'red', childrens: [], category: true },
-	{ name: 'Block', color: 'blue', childrens: [], category: true}
+	{ name: 'Block', options: { color: 'red' }, childrens: [], category: true },
+	{ name: 'Block', options: { color: 'blue'}, childrens: [], category: true}
   ];
   template = [];
 
 	addID(val: any) {
-		return {name: 'block', color: val.color, childrens: []} ;
+		return {name: 'block', options: val.options, childrens: []} ;
 	}
 }
 
